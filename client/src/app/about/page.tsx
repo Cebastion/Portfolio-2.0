@@ -1,7 +1,6 @@
 "use client";
 import { FC } from "react";
 import Image from "next/image";
-import Link from "next/link";
 
 const page: FC = () => {
   const list_skills = [
