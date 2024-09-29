@@ -20,7 +20,7 @@ const page: FC = () => {
     "TailwindCSS",
     "MongoDB",
     "PostgreSQL",
-    "MySQLasd",
+    "MySQL",
   ];
   const ScrollToGmailForm = () => {
     document
