@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CreateWorkDto } from './dto/create-work.dto';
-import { UpdateWorkDto } from './dto/update-work.dto';
 
 @Injectable()
 export class WorksService {
-  create(createWorkDto: CreateWorkDto) {
+  create() {
     return 'This action adds a new work';
   }
 
@@ -12,11 +10,7 @@ export class WorksService {
     return `This action returns all works`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} work`;
-  }
-
-  update(id: number, updateWorkDto: UpdateWorkDto) {
+  update(id: number) {
     return `This action updates a #${id} work`;
   }
 

@@ -1,4 +1,4 @@
-export class Work {
+export class WorkDto {
   id: number;
   title: string;
   desc: string;
