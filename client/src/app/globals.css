@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  :focus,
+  :active {
+    outline: none;
+  }
+
+  a:focus,
+  a:active {
+    outline: none;
+  }
+
+  nav,
+  footer,
+  header,
+  aside {
+    display: block;
+  }
+
+  html,
+  body {
+    transition: all 1s;
+    background-color: #0a0a0a;
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  input,
+  button,
+  textarea {
+    transition: all 1s;
+    font-family: inherit;
+  }
+
+  input::-ms-clear {
+    display: none;
+  }
+
+  button {
+    transition: all 1s;
+    cursor: pointer;
+  }
+
+  button::-moz-focus-inner {
+    transition: all 1s;
+    padding: 0;
+    border: 0;
+  }
+
+  a,
+  a:visited {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  img {
+    vertical-align: top;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: inherit;
+    font-weight: 400;
+  }
+
+
+  @font-face {
+    font-family: 'Bebas Neue';
+    src: url('../font/BebasNeue\ Bold.otf') format('otf'),
+      url('../font/BebasNeue\ Light.otf') format('otf'),
+      url('../font/BebasNeue\ Regular.otf') format('otf'),
+      url('../font/BebasNeue\ Regular.ttf') format('truetype'),
+      url('../font/BebasNeue\ Light.ttf') format('truetype'),
+      url('../font/BebasNeue\ Thin.ttf') format('truetype'),
+      url('../font/BebasNeue\ Bold.otf') format('otf'),
+      url('../font/BebasNeue\ Light.otf') format('otf'),
+      url('../font/BebasNeue\ Regular.otf') format('otf'),
+      url('../font/BebasNeue\ Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
