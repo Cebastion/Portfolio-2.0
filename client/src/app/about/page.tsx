@@ -160,14 +160,24 @@ const page: FC = () => {
             </div>{" "}
           </div>{" "}
         </div>{" "}
-        <div>
-          <h2>My Experience</h2>
-          <div>
-            <div>
-              <span>Freelance Developer</span>
-              <span>Jun 2022 - Present</span>
+        <div className="flex justify-between mt-14 max-[820px]:flex-col max-[820px]:items-center">
+          <h2 className="font-normal text-7xl text-white font-BebasNeue max-[820px]:mb-5 max-[820px]:text-6xl">
+            My Experience
+          </h2>
+          <div className="w-[50%] max-[820px]:w-[80%]">
+            <div className="w-full flex justify-between mb-3">
+              <span className="text-2xl font-medium text-white font-manrope">
+                Freelance Developer
+              </span>
+              <span className="font-manrope font-normal text-lg font-[#c7c7c7]">
+                Jun 2022 - Present
+              </span>
             </div>
-            <p></p>
+            <p className="font-manrope font-normal text-lg font-[#c7c7c7]">
+              From 2022 to present I working by freelance. Started career in
+              Kwork. Completed 15+ different project. Now, I'm planning to
+              continue myself career in Upwork or Peoeple Per Hour.
+            </p>
           </div>
         </div>
         <div className="mt-20 pb-3 flex justify-between max-[945px]:flex-col max-[945px]:w-[80%] max-[945px]:mx-auto">
