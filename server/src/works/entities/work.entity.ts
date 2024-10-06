@@ -1,5 +1,5 @@
 export class Work {
-  id: number;
+  id: string;
   title: string;
   desc: string;
   year: number;

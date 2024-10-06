@@ -1,5 +1,5 @@
 export class WorkDto {
-  id: number;
+  id: string;
   title: string;
   desc: string;
   year: number;
