@@ -1,22 +1,38 @@
 import {
+  BadRequestException,
   Controller,
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  UseInterceptors,
+  UploadedFile,
 } from '@nestjs/common';
 import { WorksService } from './works.service';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { WorkDto } from './dto/work.dto';
 
 @Controller('works')
 export class WorksController {
-  constructor(private readonly worksService: WorksService) {}
+  constructor(private readonly worksService: WorksService) { }
 
   @Post()
-  create(@Body() createWorkDto: WorkDto) {
-    return this.worksService.create();
+  @UseInterceptors(FileInterceptor('image'))
+  create(
+    @Body() body: Omit<WorkDto, 'img'>, // Body without the image
+    @UploadedFile() file: Express.Multer.File,
+  ) {
+    if (!file) {
+      throw new BadRequestException('Image is required');
+    }
+
+    const newWork: WorkDto = {
+      ...body,
+      image: file.buffer, // Ensure 'img' is of type Buffer
+    };
+
+    return this.worksService.create(newWork);
   }
 
   @Get()
@@ -24,13 +40,8 @@ export class WorksController {
     return this.worksService.findAll();
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWorkDto: WorkDto) {
-    return this.worksService.update(+id);
-  }
-
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.worksService.remove(+id);
+    return this.worksService.remove(id);
   }
 }

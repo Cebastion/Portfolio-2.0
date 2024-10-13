@@ -1,14 +1,25 @@
 'use client'
 import Work from '@/components/Work/Work'
+import { IWorks } from '@/interfaces/Work.interface'
+import { WorkService } from '@/services/Work.service'
 import Image from "next/image"
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-
+  const [Works, SetWorks] = useState<IWorks[]>()
   const ScrollToGmailForm = () => {
     document.getElementById('gmail-form')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const GetWorks = async () => {
+    const works = await WorkService.getWorks()
+    SetWorks(works.slice(0, 3))
+  }
+
+  useEffect(() => {
+    GetWorks()
+  }, [])
 
   return (
     <main className="">
@@ -41,8 +52,10 @@ export default function Home() {
           <h2 className='font-BebasNeue font-normal text-7xl text-white mt-20 max-[945px]:text-5xl'>Featured Projects</h2>
           <p className='font-manrope font-normal text-lg text-white mt-3'>Here are some of the selected projects that showcase my passion for full-stack development.</p>
           <div className="">
-            <Work />
           </div>
+          {Works?.map(work => (
+            <Work work={work} />
+          ))}
         </div>
         <div className="flex justify-between mt-20 max-[945px]:justify-center max-[945px]:flex-col max-[945px]:items-center">
           <h2 className='font-BebasNeue font-normal text-[101px] text-white max-[945px]:hidden'>ABOUT ME</h2>
@@ -80,19 +93,19 @@ export default function Home() {
           <form id='gmail-form' className="flex flex-col gap-6 items-start max-[945px]:mt-5">
             <div className="flex flex-col gap-1 max-[700px]:w-full">
               <label htmlFor="Name" className='font-manrope font-medium text-base text-white'>Name</label>
-              <input name='Name' type="text" className='px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full' required/>
+              <input name='Name' type="text" className='px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full' required />
             </div>
             <div className="flex flex-col gap-1 max-[700px]:w-full">
               <label htmlFor="Email" className='font-manrope font-medium text-base text-white'>Email</label>
-              <input name='Email' type="email" className='px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full' required/>
+              <input name='Email' type="email" className='px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full' required />
             </div>
             <div className="flex flex-col gap-1 max-[700px]:w-full">
               <label htmlFor="Subject" className='font-manrope font-medium text-base text-white'>Subject</label>
-              <input name='Subject' type="text" className='px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full' required/>
+              <input name='Subject' type="text" className='px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full' required />
             </div>
             <div className="flex flex-col gap-1 max-[700px]:w-full">
               <label htmlFor="Message" className='font-manrope font-medium text-base text-white'>Message</label>
-              <textarea name="Message" className='px-4 py-3 w-[600px] h-40 bg-[#1a1a1a] font-manrope font-normal text-base text-white resize-none max-[700px]:w-full' required/>
+              <textarea name="Message" className='px-4 py-3 w-[600px] h-40 bg-[#1a1a1a] font-manrope font-normal text-base text-white resize-none max-[700px]:w-full' required />
             </div>
             <button className='w-36 h-14 rounded-[100px] bg-button-custom-lime font-manrope font-bold text-base uppercase text-black'>Submit</button>
           </form>

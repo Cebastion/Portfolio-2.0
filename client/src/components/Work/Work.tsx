@@ -2,22 +2,28 @@ import { IWork } from '@/interfaces/Work.interface'
 import { FC } from 'react'
 import Image from "next/image"
 
-const Work: FC = () => {
+const Work: FC<IWork> = ({ work }) => {
+  const ConvertBufferToImage = () => {
+    const buffer = new Uint8Array(work.image.data)
+    const base64Image = btoa(String.fromCharCode(...Array.from(buffer)))
+    return `data:image/png;base64,${base64Image}`
+  }
+  console.log(work)
   return (
     <div className="flex gap-12 mt-20 items-center max-[945px]:flex-col">
-      <Image width={600} height={600} src={'/image/work.png'} alt='work' className='rounded-lg' />
+      <Image width={600} height={600} src={ConvertBufferToImage()} alt='work' className='rounded-lg' />
       <div className="">
-        <h3 className='font-manrope font-medium text-4xl text-white'>Numerology</h3>
-        <p className='font-manrope font-normal text-lg leading-none text-white mt-5'>My finished order about the site matrix where you can calculate future, compatibility, your matrix!</p>
+        <h3 className='font-manrope font-medium text-4xl text-white'>{work.title}</h3>
+        <p className='font-manrope font-normal text-lg leading-none text-white mt-5'>{work.description}</p>
         <div className="mt-5">
           <h4 className='font-manrope font-semibold text-base text-white uppercase mb-3'>Project Info</h4>
           <div className="flex justify-between py-3 border-t border-b border-[#484848] border-solid">
             <span className='font-manrope font-semibold text-base text-white'>Year</span>
-            <span className='font-manrope font-semibold text-base text-white'>2024</span>
+            <span className='font-manrope font-semibold text-base text-white'>{work.year}</span>
           </div>
           <div className="flex justify-between py-3 border-b border-[#484848] border-solid">
             <span className='font-manrope font-semibold text-base text-white'>Role</span>
-            <span className='font-manrope font-semibold text-base text-white'>Front-End</span>
+            <span className='font-manrope font-semibold text-base text-white'>{work.role}</span>
           </div>
         </div>
         <div className="mt-5 inline-flex items-center border-b border-[#d3e97a] border-solid pb-1 cursor-pointer">

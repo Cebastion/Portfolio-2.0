@@ -1,19 +1,27 @@
-import { IWork } from '@/interfaces/Work.interface'
+import { IOneWork, IWork, IWorks } from '@/interfaces/Work.interface'
 import axios from 'axios'
 
 export class WorkService {
-  static async getWorks() {
-    const { data } = await axios.get<IWork>('http://localhost:5500/works')
+  static async getWorks(): Promise<IWorks[]> {
+    const { data } = await axios.get<IWorks[]>('http://localhost:5500/works')
     return data
+
   }
 
-  static async CreateWork(work: IWork) {
-    const { data } = await axios.post<IWork>('http://localhost:5500/works', work)
-    return data
-  }
+  static async CreateWork(work: IOneWork) {
+    const formData = new FormData();
+    formData.append('title', work.title);
+    formData.append('year', work.year);
+    formData.append('client', work.client ?? '');
+    formData.append('role', work.role);
+    formData.append('link', work.link);
+    formData.append('description', work.description);
 
-  static async UpdateWork(id: number, work: IWork) {
-    const { data } = await axios.patch<IWork>(`http://localhost:5500/works/${id}`, work)
+    if (work.image) {
+      formData.append('image', work.image);
+    }
+    console.log(formData)
+    const { data } = await axios.post<IWork>('http://localhost:5500/works', formData)
     return data
   }
 

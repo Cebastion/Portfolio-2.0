@@ -1,24 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { WorkDocument } from 'src/schema/work.schema';
 import { WorkDto } from './dto/work.dto';
-import { FirebaseService } from 'src/firebase/firebase.service';
 
 @Injectable()
 export class WorksService {
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(@InjectModel('works') private WorkModel: Model<WorkDocument>) {}
 
-  create(Work: WorkDto) {
-    return Work;
+  async create(createWorkDto: WorkDto) {
+    const createdWork = new this.WorkModel(createWorkDto);
+    return createdWork.save();
   }
 
   findAll() {
-    return `This action returns all works`;
+    return this.WorkModel.find().exec();
   }
 
-  update(id: number, Work: WorkDto) {
-    return `This action updates a #${id} work ${Work}`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} work`;
+  remove(_id: string) {
+    this.WorkModel.findByIdAndDelete(_id).exec();
+    return this.WorkModel.find().exec();
   }
 }
