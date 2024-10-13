@@ -48,7 +48,7 @@ const Page: FC = () => {
         formData.append('image', form.image);
       }
       console.log(formData)
-      const { data } = await axios.post<IWork>('https://server-jet-beta.vercel.app/works', formData)
+      const { data } = await axios.post<IWork>('https://server-five-mu-25.vercel.app/works', formData)
       return data
     } catch (error) {
       console.error(error)
