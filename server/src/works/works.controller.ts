@@ -15,7 +15,7 @@ import { WorkDto } from './dto/work.dto';
 
 @Controller('works')
 export class WorksController {
-  constructor(private readonly worksService: WorksService) { }
+  constructor(private readonly worksService: WorksService) {}
 
   @Post()
   @UseInterceptors(FileInterceptor('image'))
