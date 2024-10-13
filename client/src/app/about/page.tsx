@@ -35,9 +35,11 @@ const page: FC = () => {
     SetForm((prevForm) => ({ ...prevForm, [name]: value }))
   }
 
-  const SendEmail = () => {
+  const SendEmail = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
     MailerService.SendEmail(Form)
     SetForm({ name: '', email: '', subject: '', message: '' })
+    alert("Thanks for your email!")
   }
 
   return (
@@ -313,7 +315,7 @@ const page: FC = () => {
                 Name
               </label>
               <input
-                value={Form.name} onChange={handleInputChange}
+                value={Form.name} onChange={(e) => SetForm({ ...Form, name: e.target.value })}
                 name="Name"
                 type="text"
                 className="px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full"
@@ -328,7 +330,7 @@ const page: FC = () => {
                 Email
               </label>
               <input
-                value={Form.email} onChange={handleInputChange}
+                value={Form.email} onChange={(e) => SetForm({ ...Form, email: e.target.value })}
                 name="Email"
                 type="email"
                 className="px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full"
@@ -343,7 +345,7 @@ const page: FC = () => {
                 Subject
               </label>
               <input
-                value={Form.subject} onChange={handleInputChange}
+                value={Form.subject} onChange={(e) => SetForm({ ...Form, subject: e.target.value })}
                 name="Subject"
                 type="text"
                 className="px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full"
@@ -358,7 +360,7 @@ const page: FC = () => {
                 Message
               </label>
               <textarea
-                value={Form.message} onChange={handleInputChange}
+                value={Form.message} onChange={(e) => SetForm({ ...Form, message: e.target.value })}
                 name="Message"
                 className="px-4 py-3 w-[600px] h-40 bg-[#1a1a1a] font-manrope font-normal text-base text-white resize-none max-[700px]:w-full"
                 required

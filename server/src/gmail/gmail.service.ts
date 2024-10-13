@@ -20,7 +20,7 @@ export class GmailService {
   async sendEmail(Mailer: MailerDTO) {
     const Maileropts = {
       from: Mailer.email,
-      to: process.env.GMAIL_USER,
+      to: process.env.GMAIL_GETTER_USER,
       subject: Mailer.subject,
       text: Mailer.message,
     };
