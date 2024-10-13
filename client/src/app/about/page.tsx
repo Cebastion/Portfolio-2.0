@@ -1,8 +1,11 @@
 "use client";
-import { FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import Image from "next/image";
+import { IMailer } from "@/interfaces/Mailer.interface";
+import { MailerService } from "@/services/Mailer.service";
 
 const page: FC = () => {
+  const [Form, SetForm] = useState<IMailer>({ name: '', email: '', subject: '', message: '' })
   const list_skills = [
     "HTML",
     "CSS",
@@ -26,6 +29,16 @@ const page: FC = () => {
       .getElementById("gmail-form")
       ?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    SetForm((prevForm) => ({ ...prevForm, [name]: value }))
+  }
+
+  const SendEmail = () => {
+    MailerService.SendEmail(Form)
+    SetForm({ name: '', email: '', subject: '', message: '' })
+  }
 
   return (
     <main>
@@ -288,6 +301,7 @@ const page: FC = () => {
             </span>
           </div>
           <form
+            onSubmit={SendEmail}
             id="gmail-form"
             className="flex flex-col gap-6 items-start max-[945px]:mt-5"
           >
@@ -299,6 +313,7 @@ const page: FC = () => {
                 Name
               </label>
               <input
+                value={Form.name} onChange={handleInputChange}
                 name="Name"
                 type="text"
                 className="px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full"
@@ -313,6 +328,7 @@ const page: FC = () => {
                 Email
               </label>
               <input
+                value={Form.email} onChange={handleInputChange}
                 name="Email"
                 type="email"
                 className="px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full"
@@ -327,6 +343,7 @@ const page: FC = () => {
                 Subject
               </label>
               <input
+                value={Form.subject} onChange={handleInputChange}
                 name="Subject"
                 type="text"
                 className="px-4 py-3 w-[600px] h-14 bg-[#1a1a1a] font-manrope font-normal text-base text-white max-[700px]:w-full"
@@ -341,6 +358,7 @@ const page: FC = () => {
                 Message
               </label>
               <textarea
+                value={Form.message} onChange={handleInputChange}
                 name="Message"
                 className="px-4 py-3 w-[600px] h-40 bg-[#1a1a1a] font-manrope font-normal text-base text-white resize-none max-[700px]:w-full"
                 required
