@@ -25,7 +25,7 @@ export class WorkService {
     return data
   }
 
-  static async DeleteWork(id: number) {
+  static async DeleteWork(id: string) {
     const { data } = await axios.delete<IWork>(`http://localhost:5500/works/${id}`)
     return data
   }

@@ -20,6 +20,9 @@ const Page: FC = () => {
 
   const [Works, SetWorks] = useState<IWorks[]>()
 
+  const DeleteWork = (id: string) => {
+    WorkService.DeleteWork(id)
+  }
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] || null
     setForm((prevForm) => ({ ...prevForm, image: file }))
@@ -150,7 +153,10 @@ const Page: FC = () => {
       </form>
       <div className="">
         {Works?.map(work => (
-          <Work work={work} />
+          <>
+            <Work work={work} />
+            <button onClick={() => DeleteWork(work._id)}>Delete</button>
+          </>
         ))}
       </div>
     </div>
