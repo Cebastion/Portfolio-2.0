@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export class WorkService {
   static async getWorks(): Promise<IWorks[]> {
-    const { data } = await axios.get<IWorks[]>('http://localhost:5500/works')
+    const { data } = await axios.get<IWorks[]>('https://server-jet-beta.vercel.app/works')
     return data
 
   }
@@ -26,7 +26,7 @@ export class WorkService {
   }
 
   static async DeleteWork(id: string) {
-    const { data } = await axios.delete<IWork>(`http://localhost:5500/works/${id}`)
+    const { data } = await axios.delete<IWork>(`https://server-jet-beta.vercel.app/works/${id}`)
     return data
   }
 }
