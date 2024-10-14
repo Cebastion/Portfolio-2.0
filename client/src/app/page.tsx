@@ -76,7 +76,7 @@ export default function Home() {
           <h2 className='font-BebasNeue font-normal text-[101px] text-white max-[945px]:hidden'>ABOUT ME</h2>
           <div className="max-w-[50%] max-[945px]:max-w-[80%]">
             <h3 className='font-manrope font-medium text-4xl text-white mb-5 max-[945px]:hidden'>I am a full-stack developer based in Ukraine. Has a "Computer Since" background.</h3>
-            <p className='font-manrope font-normal text-lg text-white'>I am a full-stack developer based in Ukraine looking for exciting opportunities. Has a "Computer Since" background from the National Technical University 'Kharkiv Polytechnic Institute'. Likes to focus on accessibility when developing. Passionate and curious about solving problems. Currently, I’m honing my skills. While I am not programming, I enjoy train in gym, watch horror, pop film and playing War Thunder. Learning more to improve skill.</p>
+            <p className='font-manrope font-normal text-lg text-white'>I am a full-stack developer based in Ukraine looking for exciting opportunities. Has a "Computer Science" background from the National Technical University 'Kharkiv Polytechnic Institute'. Likes to focus on accessibility when developing. Passionate and curious about solving problems. Currently, I’m honing my skills. While I am not programming, I enjoy train in gym, watch horror, pop film and playing War Thunder. Learning more to improve skill.</p>
             <div className="mt-5 inline-flex border-b border-[#d3e97a] border-solid pb-1 cursor-pointer">
               <Link href={'/about'} className='font-manrope font-bold text-base text-[#d3e97a] uppercase'>More about me</Link>
             </div>
