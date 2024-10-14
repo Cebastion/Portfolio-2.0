@@ -129,14 +129,14 @@ const page: FC = () => {
             height={700}
             src={"/image/photo3.jpg"}
             alt=""
-            className="rounded-lg max-w-full max-h-full h-[600px] w-[400px] max-[420px]:w-[320px]"
+            className="rounded-lg max-w-full max-h-full h-[600px] w-[400px]  max-[845px]:hidden"
           />
           <Image
             width={1224}
             height={700}
             src={"/image/photo4.jpg"}
             alt=""
-            className="rounded-lg max-w-full max-h-full h-[600px] w-[400px] max-[845px]:hidden"
+            className="rounded-lg max-w-full max-h-full h-[600px] w-[400px] max-[420px]:w-[320px] max-[420px]:h-[450px]"
           />
           <Image
             width={1224}

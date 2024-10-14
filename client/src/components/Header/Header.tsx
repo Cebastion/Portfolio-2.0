@@ -53,8 +53,8 @@ const Header: FC = () => {
         <div className="flex max-w-1440 mx-auto items-center max-mobile:justify-between">
           <h1 onClick={() => window.location.href = '/'} className="text-white font-BebasNeue font-normal text-3xl z-10 cursor-pointer">Dmytro Kosenko</h1>
           <nav className={Active ? "absolute top-0 left-0 h-full w-full bg-black flex flex-col items-center justify-center gap-10" : "max-mobile:hidden flex ml-auto gap-10"}>
-            <Link className='font-inter font-medium text-base text-white' href='/work'>Work</Link>
-            <Link className='font-inter font-medium text-base text-white' href='/about'>About</Link>
+            <Link onClick={() => SetActive(false)} className='font-inter font-medium text-base text-white' href='/work'>Work</Link>
+            <Link onClick={() => SetActive(false)} className='font-inter font-medium text-base text-white' href='/about'>About</Link>
             <span className='font-inter font-medium text-base text-white cursor-pointer' onClick={ScrollToGmailForm}>Contact</span>
           </nav>
           <div className="mobile:hidden cursor-pointer flex p-4 focus:outline-none gap-2 flex-col relative z-10" onClick={ToggleMenu}>
