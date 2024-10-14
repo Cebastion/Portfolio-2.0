@@ -35,7 +35,7 @@ const Work: FC<IWork> = ({ work }) => {
           </div>
         </div>
         <div className="mt-5 inline-flex items-center border-b border-[#d3e97a] border-solid pb-1 cursor-pointer">
-          <span className='font-manrope font-bold text-base text-[#d3e97a] uppercase mr-2'>View project</span>
+          <span onClick={() => window.open(work.link, "_blank")} className='font-manrope font-bold text-base text-[#d3e97a] uppercase mr-2'>View project</span>
           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_7_140)">
               <path d="M5.9897 19.7174L16.3036 9.40357V16.889L18.3033 16.889L18.3033 5.98966L7.40391 5.98966L7.40391 7.98936L14.8893 7.98936L4.57549 18.3032L5.9897 19.7174Z" fill="#D3E97A" />
