@@ -3,11 +3,19 @@ import { FC } from 'react'
 import Image from "next/image"
 
 const Work: FC<IWork> = ({ work }) => {
+
   const ConvertBufferToImage = () => {
-    const buffer = new Uint8Array(work.image.data)
-    const base64Image = btoa(String.fromCharCode(...Array.from(buffer)))
-    return `data:image/png;base64,${base64Image}`
+    const buffer = new Uint8Array(work.image.data);
+
+    // Преобразуем каждый байт в соответствующий символ и создаём строку
+    const binaryString = buffer.reduce((acc, byte) => acc + String.fromCharCode(byte), '');
+
+    // Преобразуем бинарную строку в base64
+    const base64Image = btoa(binaryString);
+
+    return `data:image/png;base64,${base64Image}`;
   }
+
   console.log(work)
   return (
     <div className="flex gap-12 mt-20 items-center max-[945px]:flex-col">
