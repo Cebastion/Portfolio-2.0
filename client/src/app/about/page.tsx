@@ -1,8 +1,8 @@
-"use client";
-import { ChangeEvent, FC, useState } from "react";
-import Image from "next/image";
-import { IMailer } from "@/interfaces/Mailer.interface";
-import { MailerService } from "@/services/Mailer.service";
+"use client"
+import { IMailer } from "@/interfaces/Mailer.interface"
+import { MailerService } from "@/services/Mailer.service"
+import Image from "next/image"
+import { ChangeEvent, FC, useState } from "react"
 
 const page: FC = () => {
   const [Form, SetForm] = useState<IMailer>({ name: '', email: '', subject: '', message: '' })
@@ -23,12 +23,12 @@ const page: FC = () => {
     "MongoDB",
     "PostgreSQL",
     "MySQL",
-  ];
+  ]
   const ScrollToGmailForm = () => {
     document
       .getElementById("gmail-form")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
+      ?.scrollIntoView({ behavior: "smooth" })
+  }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -178,13 +178,14 @@ const page: FC = () => {
           <h2 className="font-normal text-7xl text-white font-BebasNeue max-[820px]:mb-5 max-[820px]:text-6xl">
             My Experience
           </h2>
-          <div className="w-[50%] max-[820px]:w-[80%]">
+          <div className='w-[50%] max-[820px]:w-[80%]'>
+            <div className="">
             <div className="w-full flex justify-between mb-3">
               <span className="text-2xl font-medium text-white font-manrope">
                 Freelance Developer
               </span>
               <span className="font-manrope font-normal text-lg font-[#c7c7c7]">
-                Jun 2022 - Present
+                Jun 2022 - January 2025
               </span>
             </div>
             <p className="font-manrope font-normal text-lg font-[#c7c7c7]">
@@ -192,6 +193,20 @@ const page: FC = () => {
               Kwork. Completed 15+ different project. Now, I'm planning to
               continue myself career in Upwork or Peoeple Per Hour.
             </p>
+          </div>
+          <div className="mt-5">
+            <div className="w-full flex justify-between mb-3">
+              <span className="text-2xl font-medium text-white font-manrope">
+                Technical support specialist
+              </span>
+              <span className="font-manrope font-normal text-lg font-[#c7c7c7]">
+                January 2025 - Present
+              </span>
+            </div>
+            <p className="font-manrope font-normal text-lg font-[#c7c7c7]">
+              I have been working as a Technical Support Specialist at UniTalk, Kyiv (Telecommunications, Communication) since January 2025, focusing on testing, technical support, service monitoring, integrations, and troubleshooting.
+            </p>
+          </div>
           </div>
         </div>
         <div className="mt-20 pb-3 flex justify-between max-[945px]:flex-col max-[945px]:w-[80%] max-[945px]:mx-auto">
@@ -376,7 +391,7 @@ const page: FC = () => {
         </div>
       </div>
     </main>
-  );
-};
+  )
+}
 
-export default page;
+export default page
