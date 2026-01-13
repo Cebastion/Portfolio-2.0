@@ -23,7 +23,7 @@ const fadeUp = {
     y: 0,
     transition: { duration: 0.6, ease: 'easeOut' }
   }
-}
+} as any
 
 const fadeImage = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -32,7 +32,7 @@ const fadeImage = {
     scale: 1,
     transition: { duration: 0.6, ease: 'easeOut' }
   }
-}
+} as any
 
 /* ---------------- component ---------------- */
 

@@ -24,7 +24,7 @@ const fadeUp = {
     y: 0,
     transition: { duration: 0.6, ease: 'easeOut' }
   }
-}
+} as any
 
 const fadeScale = {
   hidden: { opacity: 0, scale: 0.95 },
@@ -33,7 +33,7 @@ const fadeScale = {
     scale: 1,
     transition: { duration: 0.6, ease: 'easeOut' }
   }
-}
+} as any
 
 export default function HomePage() {
   const [Works, SetWorks] = useState<IWorks[]>()
