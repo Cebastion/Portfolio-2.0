@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export class WorkService {
   static async getWorks(): Promise<IWorks[]> {
-    const { data } = await axios.get<IWorks[]>('https://server-portfolio-sigma.vercel.app/works')
+    const { data } = await axios.get<IWorks[]>('https://server-theta-beryl-89.vercel.app/works')
     return data
 
   }
@@ -21,12 +21,12 @@ export class WorkService {
       formData.append('image', work.image);
     }
     console.log(formData)
-    const { data } = await axios.post<IWork>('https://server-alpha-tawny.vercel.app/works', formData)
+    const { data } = await axios.post<IWork>('https://server-theta-beryl-89.vercel.app/works', formData)
     return data
   }
 
   static async DeleteWork(id: string) {
-    const { data } = await axios.delete<IWork>(`https://server-portfolio-sigma.vercel.app/works/${id}`)
+    const { data } = await axios.delete<IWork>(`https://server-theta-beryl-89.vercel.app/works/${id}`)
     return data
   }
 }
