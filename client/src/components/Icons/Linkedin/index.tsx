@@ -1,13 +1,20 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const Linkedin = () => {
   return (
-    <div
+    <motion.div
       className="w-14 h-14 rounded-full bg-bg-custom-gray flex items-center justify-center cursor-pointer"
       onClick={() =>
         window.open(
           "https://www.linkedin.com/in/dmytro-kosenko-49b4ab27b/",
-          "_blank",
+          "_blank"
         )
       }
+      whileHover={{ scale: 1.2, rotate: 10 }}   // pop and tilt on hover
+      whileTap={{ scale: 0.9, rotate: -10 }}    // shrink and tilt on click
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <svg
         width="26"
@@ -25,8 +32,9 @@ const Linkedin = () => {
           fill="#D3E97A"
         />
       </svg>
-    </div>
-  )
-}
+    </motion.div>
+  );
+};
 
-export default Linkedin
+export default Linkedin;
+

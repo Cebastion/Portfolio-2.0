@@ -1,20 +1,28 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useCallback } from "react";
+
 const ContactMeBlock = () => {
-  const ScrollToGmailForm = () => {
+  const ScrollToGmailForm = useCallback(() => {
     document
       .getElementById("gmail-form")
-      ?.scrollIntoView({ behavior: "smooth" })
-  }
+      ?.scrollIntoView({ behavior: "smooth" });
+  }, [])
   return (
-    <button
-      className="h-14 w-52 rounded-3xl bg-button-custom-lime rounded-100px flex justify-around items-center"
+    <motion.button
+      className="h-14 w-52 rounded-3xl bg-button-custom-lime flex justify-around items-center"
       onClick={ScrollToGmailForm}
+      whileHover={{ scale: 1.05, boxShadow: "0px 0px 15px rgba(211, 233, 122, 0.6)" }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <span className="font-manrope font-bold text-base uppercase text-black">
         Contact me
       </span>
-      <div className="rounded-full w-3 h-3 bg-black"></div>
-    </button>
-  )
-}
+    </motion.button>
+  );
+};
 
-export default ContactMeBlock
+export default ContactMeBlock;
+
